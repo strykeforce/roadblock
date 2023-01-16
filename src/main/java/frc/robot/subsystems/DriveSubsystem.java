@@ -1,10 +1,10 @@
-package frc.team2767.roadblock.subsystem;
+package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.team2767.roadblock.command.ArcadeDriveCommand;
 
-public class DriveSubsystem extends Subsystem {
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+public class DriveSubsystem extends SubsystemBase {
 
   public static final TalonSRX frontLeft = new TalonSRX(0);
   public static final TalonSRX backLeft = new TalonSRX(2);
@@ -14,16 +14,13 @@ public class DriveSubsystem extends Subsystem {
 
   public DriveSubsystem() {}
 
-  @Override
-  protected void initDefaultCommand() {
-    setDefaultCommand(new ArcadeDriveCommand());
-  }
 
-  public static void move(double linearSpeed, double rotate) {
+
+  public void move(double linearSpeed, double rotate) {
     drive.arcadeDrive(linearSpeed, rotate);
   }
 
-  public static void stop() {
+  public void stop() {
     drive.arcadeDrive(0, 0);
   }
 }
